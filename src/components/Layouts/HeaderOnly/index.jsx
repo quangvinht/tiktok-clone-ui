@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '~/components/Layouts/DefaultLayout/Header';
+import Header from '~/components/Layouts/components/Header';
 
 function DefaultLayout({ children }) {
     return (
