@@ -6,6 +6,8 @@
     //DefaultLayout:
     --default-layout-header-height: 60px;
     --default-layout-header-width: 1150px;
+    --black: #000;
+    --text-color: #333;
 }
 * {
     box-sizing: border-box;
@@ -14,7 +16,6 @@
 }
 
 html {
-    font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
 }
 
@@ -22,4 +23,18 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+a[href] {
+    color: var(--text-color);
+
+    text-decoration: none;
 }
