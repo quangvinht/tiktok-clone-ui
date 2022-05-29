@@ -21,6 +21,11 @@
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
+    //Separate for lout lot :
+
+    &.sepatate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
 }
 
 //Header:
