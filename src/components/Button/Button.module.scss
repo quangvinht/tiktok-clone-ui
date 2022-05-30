@@ -1,6 +1,8 @@
 .wrapper {
     //style chung cua cac button:
     display: inline-flex;
+    font-family: 'ProximaNova', sans-serif;
+
     align-items: center;
     font-size: 1.6rem;
     font-weight: 700;
@@ -33,6 +35,7 @@
     display: inline-block;
     text-align: center;
     width: 24px;
+    height: 24px;
 }
 //button type:
 
@@ -80,4 +83,12 @@
 .large {
     min-width: 150px;
     padding: 14px 16px;
+}
+.outlineBlack {
+    color: var(--text-color);
+    margin-right: 10px;
+    border-color: rgba(22, 24, 35, 0.12);
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
