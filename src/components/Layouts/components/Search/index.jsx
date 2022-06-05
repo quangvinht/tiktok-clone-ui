@@ -89,45 +89,62 @@ export default function Search() {
         // fetchAPI();
     }, [debounced]); // searchValue nhưng đã áp dụng debounce
 
-    return (
-        <HeadlessTippy
-            interactive
-            onClickOutside={hanndleHideResult}
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    type="text"
-                    placeholder="Search accounts and video"
-                    spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    onFocus={() => setShowResult(true)}
-                />
-                {!!searchValue &&
-                    (loading ? (
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                    ) : (
-                        <button className={cx('clear-button')} onClick={handleClear}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                    ))}
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
 
-                <button className={cx('search-btn')}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
+    return (
+        // Using a wrapper <div> or <span> tag around the reference element
+        //solves this by creating a new parentNode context.
+        <div>
+            <HeadlessTippy
+                interactive
+                onClickOutside={hanndleHideResult}
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
+                )}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        type="text"
+                        placeholder="Search accounts and video"
+                        spellCheck={false}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {!!searchValue &&
+                        (loading ? (
+                            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                        ) : (
+                            <button className={cx('clear-button')} onClick={handleClear}>
+                                <FontAwesomeIcon icon={faCircleXmark} />
+                            </button>
+                        ))}
+
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                        }}
+                    >
+                        <SearchIcon />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }

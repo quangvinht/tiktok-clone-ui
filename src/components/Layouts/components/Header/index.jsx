@@ -4,14 +4,16 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
 import Image from '~/components/Image';
+import { Link } from 'react-router-dom';
+import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
+import { UploadIcon, MessageIcon, BoxIcon } from '~/components/Icons';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
-import { UploadIcon, MessageIcon, BoxIcon } from '~/components/Icons';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -89,7 +91,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
+                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                        <img src={images.logo} alt="TikTok" />
+                    </Link>
                 </div>
 
                 {/* Ô tìm kiếm */}
@@ -102,18 +106,18 @@ function Header() {
                             {/* <Tippy delay={[0, 200]} content="Upload video" placement="bottom"> */}
 
                             <>
-                                <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                                <Tippy delay={[0, 0]} content="Upload video" placement="bottom">
                                     <Button outlineBlack leftIcon={<UploadIcon />}>
                                         Tải lên
                                     </Button>
                                 </Tippy>
-                                <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <Tippy delay={[0, 0]} content="Message" placement="bottom">
                                     <button className={cx('action-btn')}>
                                         <MessageIcon />
                                     </button>
                                 </Tippy>
 
-                                <Tippy delay={[0, 200]} content="Hộp thư" placement="bottom">
+                                <Tippy delay={[0, 0]} content="Hộp thư" placement="bottom">
                                     <button className={cx('action-btn')}>
                                         <BoxIcon />
                                     </button>
@@ -135,7 +139,7 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={currentUser ? UserMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? UserMenu : MENU_ITEMS} onChange={handleMenuChange} hideOnClick={false}>
                         {currentUser ? (
                             <Image
                                 src="https://sp16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f4bb4ec452a446f3f134ac81d7fd83d4~c5_100x100.jpeg?x-expires=1653969600&x-signature=iJkBGzifAfS5%2BpcmhlHyB8%2FAw8Y%3D"
