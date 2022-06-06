@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -69,5 +70,9 @@ const Button = forwardRef(
         );
     },
 );
+
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default Button;
