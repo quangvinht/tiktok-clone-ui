@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless'; // different import path!
 import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
 
-import * as searchService from '~/apiServices/searchServices';
+import * as searchService from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
-import * as request from '~/utils/request';
+// import * as request from '~/utils/request';
 
 import { useDebounce } from '~/hooks';
 
