@@ -29,6 +29,6 @@ function AccountItem({ data }) {
 }
 // eslint-disable-next-line react/no-typos
 AccountItem.propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.object.isRequired,
 };
 export default AccountItem;

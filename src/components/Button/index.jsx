@@ -13,7 +13,6 @@ const Button = forwardRef(
             large = false,
             small = false,
             round = false,
-
             primary = false,
             outline = false,
             outlineBlack = false,
@@ -72,7 +71,23 @@ const Button = forwardRef(
 );
 
 Button.propTypes = {
+    to: PropTypes.string,
+
+    large: PropTypes.bool,
+    small: PropTypes.bool,
+    round: PropTypes.bool,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    outlineBlack: PropTypes.bool,
+    text: PropTypes.bool,
+    disabled: PropTypes.bool,
+
+    href: PropTypes.string,
+    onClick: PropTypes.func,
     children: PropTypes.node.isRequired,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    className: PropTypes.string,
 };
 
 export default Button;

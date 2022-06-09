@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '~/components/Popper/Menu/Menu.module.scss';
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -15,5 +16,10 @@ function MenuItem({ data, onClick }) {
         </Button>
     );
 }
+
+MenuItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    onClick: PropTypes.func,
+};
 
 export default MenuItem;
