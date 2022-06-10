@@ -10,7 +10,7 @@ import * as searchService from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 import AccountItem from '~/components/AccountItem';
-import { SearchIcon } from '~/components/Icons';
+import { SearchIcon } from '~/components/Icons/Icons';
 // import * as request from '~/utils/request';
 
 import { useDebounce } from '~/hooks';

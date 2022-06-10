@@ -3,16 +3,16 @@ import { faCoins, faEarthAsia, faEllipsisVertical, faGear, faSignOut, faUser } f
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
-import Image from '~/components/Image';
+import Image from '~/components/Image/Image';
 import { Link } from 'react-router-dom';
 import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
-import { UploadIcon, MessageIcon, BoxIcon } from '~/components/Icons';
+import { UploadIcon, MessageIcon, BoxIcon } from '~/components/Icons/Icons';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Button from '~/components/Button';
-import Menu from '~/components/Popper/Menu';
-import Search from '../Search';
+import Button from '~/components/Button/Button';
+import Menu from '~/components/Popper/Menu/Menu';
+import Search from '../Search/Search';
 import config from '~/config';
 
 const cx = classNames.bind(styles);

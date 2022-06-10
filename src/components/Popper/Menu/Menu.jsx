@@ -6,7 +6,7 @@ import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
 import AccountItem from '~/components/AccountItem';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import MenuItem from './MenuItem';
+import MenuItem from './MenuItem/MenuItem';
 import Header from './Header';
 import PropTypes from 'prop-types';
 
