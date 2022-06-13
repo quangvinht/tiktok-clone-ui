@@ -36,6 +36,28 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
             );
         });
     };
+
+    const handleBack = () => {
+        //Xóa phần tử cuối :
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => {
+        return (
+            <div className={cx('meu-list')} tabIndex="-1" {...attrs}>
+                <PopperWrapper className={cx('menu-popper')}>
+                    {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                    <div className={cx('menu-body')}>{renderItems()}</div>
+                </PopperWrapper>
+            </div>
+        );
+    };
+
+    //Reset to firt page :
+    const handleResetMenu = () => {
+        setHistory((prev) => prev.slice(0, 1)); // lấy phần tử đầu tiên
+    };
+
     return (
         <Tippy
             delay={[0, 700]}
@@ -43,31 +65,15 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
             interactive={true}
             placement="bottom-end"
             hideOnClick={hideOnClick}
-            render={(attrs) => (
-                <div className={cx('meu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    //Xóa phần tử cuối :
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
+            render={renderResult}
             //TRở về menu đầu tiên:
-            onHide={() => {
-                setHistory((prev) => prev.slice(0, 1)); // lấy phần tử đầu tiên
-            }}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>
     );
 }
+
 Menu.propTypes = {
     children: PropTypes.node.isRequired,
     items: PropTypes.array,

@@ -25,12 +25,12 @@ export default function Search() {
     const [searchResult, setSearchResult] = useState([]);
 
     //show result:
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
 
     //Loading:llúc đầu chưa tìm kiếm thì ko loading
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     //Lấy dom element:
     const inputRef = useRef();
@@ -48,13 +48,13 @@ export default function Search() {
 
     useEffect(() => {
         //Nếu ko có kết quả trong ô input:
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
         const fetchAPI = async () => {
             setLoading(true);
-            const result = await searchService.search(encodeURIComponent(debounced));
+            const result = await searchService.search(encodeURIComponent(debouncedValue));
             setSearchResult(result);
             setLoading(false);
         };
@@ -67,7 +67,7 @@ export default function Search() {
         //     try {
         //         const res = await request.get(`users/search`, {
         //             params: {
-        //                 q: encodeURIComponent(debounced),
+        //                 q: encodeURIComponent(debouncedValue),
         //                 type: 'less',
         //             },
         //         });
@@ -87,7 +87,7 @@ export default function Search() {
         //     }
         // };
         // fetchAPI();
-    }, [debounced]); // searchValue nhưng đã áp dụng debounce
+    }, [debouncedValue]); // searchValue nhưng đã áp dụng debounce
 
     const handleChange = (e) => {
         const searchValue = e.target.value;
