@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Sidebar.module.scss';
 import Menu, { MenuItem } from './Menu';
 import config from '~/config';
+import SuggestedAccounts from '~/components/SuggestedAccounts';
 import {
     HomeIcon,
     UsergruopIcon,
@@ -28,6 +29,8 @@ function Sidebar() {
 
                 <MenuItem title="Live" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
+            <SuggestedAccounts lable={'Suggested Accounts'} />
+            <SuggestedAccounts lable={'Following Accounts'} />
         </aside>
     );
 }
