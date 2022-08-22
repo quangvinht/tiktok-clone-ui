@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Tippy from '@tippyjs/react/headless';
+import 'tippy.js/animations/scale.css';
+import 'tippy.js/animations/scale-subtle.css';
+import 'tippy.js/animations/scale-extreme.css';
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
 import AccountItem from '~/components/AccountItem';
