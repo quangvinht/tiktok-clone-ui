@@ -175,3 +175,9 @@ export const LiveActiveIcon = ({ width = '2.2rem', height = '2.2rem', className 
         ></path>
     </svg>
 );
+
+export const MusicIcon = ({ width = '2.2rem', height = '2.2rem', className }) => (
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className} width={width} height={height}>
+        {/* <use xlink:href="#svg-music-note"></use> */}
+    </svg>
+);
